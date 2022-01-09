@@ -8,7 +8,14 @@ import { Component, OnInit, Output } from '@angular/core';
 
 
   // use the referernce variable (#thumnail👇)
-  template: `<app-thumbnail #thumnail *ngFor="let EachEvent of events" [event]="EachEvent" ></app-thumbnail>
+  template: `<div >
+  <h3>All events</h3>
+  <div class="row">
+    <div class="col-md-5" *ngFor="let EachEvent of events">
+  <app-thumbnail #thumnail  [event]="EachEvent" ></app-thumbnail>
+    </div>
+  </div>
+</div>
   <!-- <p>{{thumnail.property}}</p> -->
   <!-- <button (click)="thumnail.myname()">click to show my name </button> -->
   `,

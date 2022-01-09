@@ -13,6 +13,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
       <p>event Date : {{event.date}}</p>
       <p>event Time : {{event.time}}</p>
       <p>Ticket Price : $ {{event.price}}</p>
+      <p>event location : {{event.location.address}}-- {{event.location.city}},{{event.location.country}} </p>
       <!-- <p>event time : {{event.time}}</p>
       <p>ticket price : $ {{event.price}} </p> -->
       <!-- <button (click)="clickme()">click me !</button> -->
@@ -21,6 +22,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   `,
   styles: [`
   .bad {
+    min-height:380px;
     color: #bbb;
     font-family: cursive
   }
