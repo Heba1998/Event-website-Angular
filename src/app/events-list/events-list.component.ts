@@ -12,7 +12,7 @@ import { Component, OnInit, Output } from '@angular/core';
   <h3>All events</h3>
   <div class="row">
     <div class="col-md-5" *ngFor="let EachEvent of events">
-  <app-thumbnail #thumnail  [event]="EachEvent" ></app-thumbnail>
+  <app-thumbnail #thumnail [event]="EachEvent" ></app-thumbnail>
     </div>
   </div>
 </div>
