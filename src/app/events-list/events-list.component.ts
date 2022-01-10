@@ -24,13 +24,15 @@ import { EventService } from '../event.service';
   styleUrls: ['./events-list.component.css']
 })
 export class EventsListComponent implements OnInit {
-  events:any[] | undefined;
+  events:any
   constructor(private eventService: EventService, private toastr : ToastrService) { 
     // this.events= this.eventService.getEvents()
   }
 
   ngOnInit(){
-    this.events= this.eventService.getEvents()
+    this.eventService.getEvents().subscribe(events => {
+      this.events=events
+    })
   }
 
 

@@ -4,10 +4,10 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template:`
   <app-navbar></app-navbar>
-  <h1 style="font-family: cursive;">Welcome all in {{title}}</h1>
+  <!-- <h1 style="font-family: cursive;">Welcome all in {{title}}</h1> -->
   <!-- <img src="../assets/images/basic-shield.png"/> -->
   <div class="container">
-    <hr>
+    <!-- <hr> -->
     <router-outlet></router-outlet>
   <!-- <app-events-list></app-events-list> -->
   </div>

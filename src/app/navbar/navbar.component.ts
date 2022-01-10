@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from '../common/toastr.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +10,18 @@ import { Component, OnInit } from '@angular/core';
     font-family: cursive;
     padding: 10px
   }
+  li> a.active{
+    color: #FFDF01;
+  }
   `]
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastr : ToastrService) { }
 
   ngOnInit(): void {
   }
-
+  handelthumbnail(){
+    this.toastr.success('Hello Haboosh 💃')
+  }
 }

@@ -4,7 +4,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   selector: 'app-thumbnail',
   template: `
   <!-- <h2>thumbnail works!</h2> -->
-  <div class="well hoverwell thumbnail" >
+  <div class="well hoverwell thumbnail" [routerLink]="['/events',event.id]" >
   <div class="bad" >
   <h3>{{event.name}}</h3>
   <img [src]="event.imageUrl" style="width: 150px; height:120px; margin: 20px 0"/>
@@ -52,4 +52,6 @@ export class ThumbnailComponent implements OnInit {
   // myname(){
   //   console.log("my name is Heba 🙆‍♀️")
   // }
+
+
 }
