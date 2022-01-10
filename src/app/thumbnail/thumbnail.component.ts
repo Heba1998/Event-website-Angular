@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   <div class="well hoverwell thumbnail" >
   <div class="bad" >
   <h3>{{event.name}}</h3>
-  <img [src]="event.imageUrl" style="width: 150px; height:120px"/>
+  <img [src]="event.imageUrl" style="width: 150px; height:120px; margin: 20px 0"/>
       <p>event id : {{event.id}}</p>
       <p>event name : {{event.name}}</p>
       <p>event Date : {{event.date}}</p>
