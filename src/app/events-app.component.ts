@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
   <!-- <img src="../assets/images/basic-shield.png"/> -->
   <div class="container">
     <hr>
-  <app-events-list></app-events-list>
+    <router-outlet></router-outlet>
+  <!-- <app-events-list></app-events-list> -->
   </div>
   `,
 })

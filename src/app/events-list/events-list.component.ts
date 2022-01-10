@@ -39,6 +39,6 @@ export class EventsListComponent implements OnInit {
   // }
 
   handelthumbnail(eventTime:any,eventName: any){
-    this.toastr.success(eventTime,eventName)
+    this.toastr.info(eventTime,eventName)
   }
 }

@@ -7,7 +7,10 @@ export class EventService {
 
   getEvents(){
     return EVENTS;
+  }
 
+  getevent(id: number){
+    return EVENTS.find( event=> event.id===id)
   }
   constructor() { }
 }
