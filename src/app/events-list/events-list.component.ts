@@ -1,5 +1,6 @@
 
 import { Component, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from '../common/toastr.service';
 import { EventService } from '../event.service';
 
@@ -24,15 +25,17 @@ import { EventService } from '../event.service';
   styleUrls: ['./events-list.component.css']
 })
 export class EventsListComponent implements OnInit {
-  events:any
-  constructor(private eventService: EventService, private toastr : ToastrService) { 
+  events:any[] | undefined
+  constructor(private eventService: EventService, private toastr : ToastrService, private route:ActivatedRoute) { 
     // this.events= this.eventService.getEvents()
   }
 
   ngOnInit(){
-    this.eventService.getEvents().subscribe(events => {
-      this.events=events
-    })
+    // this.eventService.getEvents().subscribe(events => {
+    //   this.events=events
+    // })
+
+    this.events = this.route.snapshot.data['events']
   }
 
 

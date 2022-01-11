@@ -16,6 +16,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
 
 import { EventRouteActivator } from './event-detalis/event-route-activator.service';
 import { E404Component } from './e404/404.component';
+import { EventsListResolver } from './events-list-resolver.service';
+
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { E404Component } from './e404/404.component';
     EventService,
      ToastrService,
      EventRouteActivator,
+     EventsListResolver,
      {
        provide: 'canDeactivateCreateEvent',
         useValue: checkDirtyState
