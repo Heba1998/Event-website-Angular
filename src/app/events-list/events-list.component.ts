@@ -22,7 +22,6 @@ import { EventService } from '../event.service';
   <!-- <p>{{thumnail.property}}</p> -->
   <!-- <button (click)="thumnail.myname()">click to show my name </button> -->
   `,
-  styleUrls: ['./events-list.component.css']
 })
 export class EventsListComponent implements OnInit {
   events:any[] | undefined

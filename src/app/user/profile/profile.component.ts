@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
       <button type="button" class="btn btn-default" (click)="canceled()">Cancel</button>
     </div>
   `,
-  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
   isDirty: boolean= true;
