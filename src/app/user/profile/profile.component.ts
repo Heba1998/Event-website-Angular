@@ -1,26 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-profile',
-  template: `
-    <h1>Edit Your Profile</h1>
-    <hr>
-    <div class="col-md-6">
-      <h3>[Edit profile form will go here]</h3>
-      <br />
-      <br />
-      <button type="submit" class="btn btn-primary">Save</button>
-      <button type="button" class="btn btn-default" (click)="canceled()">Cancel</button>
-    </div>
-  `,
+  templateUrl: './profile.component.html',
+  styles: [`
+    em{
+        color: crimson;
+        float: right
+    }`]
 })
 export class ProfileComponent implements OnInit {
   isDirty: boolean= true;
-
-  constructor(private route: Router) { }
+  profileForm!: FormGroup;
+  mouseoverlogin: boolean = false;
+  constructor(private route: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
+    let firstName = new FormControl(this.auth.currentUser?.firstName, Validators.required)
+    let lastName = new FormControl(this.auth.currentUser?.lastName, Validators.required)
+    this.profileForm = new FormGroup({
+      firstName: firstName,
+      lastName: lastName
+    })
   }
 
 
@@ -28,5 +32,11 @@ export class ProfileComponent implements OnInit {
     this.route.navigate(['/events'])
   }
 
+  saveprofile(value: any){
+    if (this.profileForm.valid) {
+      this.auth.updateCurrentUser(value.firstName, value.lastName)
+      this.route.navigate(['/events'])
+    }
+  }
 
 }

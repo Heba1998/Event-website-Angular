@@ -4,11 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { EventsAppComponent } from './events-app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { ThumbnailComponent } from './thumbnail/thumbnail.component';
+import { ThumbnailComponent } from './shared/thumbnail.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ToastrService } from './common/toastr.service';
 import { EventsListComponent } from './events-list/events-list.component';
-import { EventService } from './event.service';
+import { EventService } from './shared/event.service';
 import { EventDetalisComponent } from './event-detalis/event-detalis.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
@@ -17,6 +17,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { EventRouteActivator } from './event-detalis/event-route-activator.service';
 import { E404Component } from './e404/404.component';
 import { EventsListResolver } from './events-list-resolver.service';
+import { AuthService } from './user/auth.service';
 
 
 
@@ -41,6 +42,7 @@ import { EventsListResolver } from './events-list-resolver.service';
      ToastrService,
      EventRouteActivator,
      EventsListResolver,
+     AuthService,
      {
        provide: 'canDeactivateCreateEvent',
         useValue: checkDirtyState

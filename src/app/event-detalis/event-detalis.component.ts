@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EventService } from '../event.service';
+import { IEvent } from '../shared/event.model';
+import { EventService } from '../shared/event.service';
 
 @Component({
   // selector: 'app-event-detalis',
@@ -8,7 +9,7 @@ import { EventService } from '../event.service';
   // styleUrls: ['./event-detalis.component.css']
 })
 export class EventDetalisComponent implements OnInit {
-  event:any
+  event:IEvent | undefined
   constructor(private eventService : EventService, private route: ActivatedRoute, private home:Router) { }
 
   ngOnInit(): void {

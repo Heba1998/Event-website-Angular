@@ -8,7 +8,7 @@ export class ToastrService {
 
   constructor() { }
 
-  success(message:string, title?:string)
+  success(message:any, title?:string)
   {
    toastr.success(message, title)
   }

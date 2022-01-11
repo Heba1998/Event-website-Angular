@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from '../common/toastr.service';
+import { AuthService } from '../user/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,11 +18,11 @@ import { ToastrService } from '../common/toastr.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private toastr : ToastrService) { }
+  constructor(private toastr : ToastrService, public auth:AuthService) { }
 
   ngOnInit(): void {
   }
   handelthumbnail(){
-    this.toastr.success('Hello Haboosh 💃')
+    this.toastr.success('Hello '+ this.auth.currentUser?.userName)
   }
 }

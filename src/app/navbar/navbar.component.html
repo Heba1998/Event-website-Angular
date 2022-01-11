@@ -29,7 +29,15 @@
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li>
-            <a (click)="handelthumbnail()" [routerLink]="['user/profile']" >Welcome Heba</a>
+            <a [routerLink]="['user/login']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}"
+            *ngIf="!auth.isAuthenticated()">login</a>
+            
+            <a (click)="handelthumbnail()" [routerLink]="['user/profile']" 
+            routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}" 
+          *ngIf="auth.isAuthenticated()">Welcome {{auth.currentUser?.firstName}} </a>
           </li>
         </ul>
       </div>
