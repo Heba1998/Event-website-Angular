@@ -6,12 +6,12 @@
         <div class="form-group" [ngClass]="{'error': !validatedFirstName()}">
           <label for="firstName">First Name:</label>
           <input formControlName="firstName" id="firstName" type="text" class="form-control" placeholder="First Name..." />
-          <em *ngIf="profileForm.controls.firstName?.invalid && (profileForm.controls.firstName?.touched|| mouseover)">required</em>
+          <em *ngIf="!validatedFirstName()">required</em>
         </div>
         <div class="form-group" [ngClass]="{'error': !validatedLastName() }">
           <label for="lastName">Last Name:</label>
           <input formControlName="lastName" id="lastName" type="text" class="form-control" placeholder="Last Name..." />
-          <em *ngIf="profileForm.controls.lastName?.invalid && (profileForm.controls.lastName?.touched|| mouseover)">required</em>
+          <em *ngIf="!validatedLastName()">required</em>
         </div>
         <span (mouseenter)="mouseover=true" (mouseleave)="mouseover=false">
         <button type="submit" class="btn btn-primary" [disabled]="profileForm.invalid">Save</button>

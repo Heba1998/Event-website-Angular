@@ -18,13 +18,14 @@ import { AuthService } from '../auth.service';
 export class ProfileComponent implements OnInit {
   isDirty: boolean= true;
   profileForm!: FormGroup;
-  mouseover: boolean = false;
-  private firstName: FormControl | undefined
-  private lastName: FormControl | undefined
+  mouseoverlogin: boolean = false;
+  mouseover:boolean=false;
+  private firstName: FormControl = new FormControl;
+  private lastName: FormControl = new FormControl;
   constructor(private route: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.firstName = new FormControl(this.auth.currentUser?.firstName, Validators.required)
+    this.firstName = new FormControl(this.auth.currentUser?.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')])
     this.lastName = new FormControl(this.auth.currentUser?.lastName, Validators.required)
     this.profileForm = new FormGroup({
       firstName: this.firstName,
@@ -47,11 +48,11 @@ export class ProfileComponent implements OnInit {
 
 
   validatedLastName(){
-    return this.lastName?.valid || this.lastName?.touched
+    return this.lastName.valid || this.lastName.untouched && !this.mouseover
   }
 
 
   validatedFirstName(){
-   return this.firstName?.valid || this.firstName?.touched
+   return this.firstName.valid || this.firstName.untouched && !this.mouseover
   }
 }
