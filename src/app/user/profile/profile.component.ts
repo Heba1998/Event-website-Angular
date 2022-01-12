@@ -8,22 +8,27 @@ import { AuthService } from '../auth.service';
   templateUrl: './profile.component.html',
   styles: [`
     em{
-        color: crimson;
+        color:#df691a;
         float: right
+    }
+    .error input {
+      background-color:#efd4c3
     }`]
 })
 export class ProfileComponent implements OnInit {
   isDirty: boolean= true;
   profileForm!: FormGroup;
-  mouseoverlogin: boolean = false;
+  mouseover: boolean = false;
+  private firstName: FormControl | undefined
+  private lastName: FormControl | undefined
   constructor(private route: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
-    let firstName = new FormControl(this.auth.currentUser?.firstName, Validators.required)
-    let lastName = new FormControl(this.auth.currentUser?.lastName, Validators.required)
+    this.firstName = new FormControl(this.auth.currentUser?.firstName, Validators.required)
+    this.lastName = new FormControl(this.auth.currentUser?.lastName, Validators.required)
     this.profileForm = new FormGroup({
-      firstName: firstName,
-      lastName: lastName
+      firstName: this.firstName,
+      lastName: this.lastName
     })
   }
 
@@ -39,4 +44,14 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+
+
+  validatedLastName(){
+    return this.lastName?.valid || this.lastName?.touched
+  }
+
+
+  validatedFirstName(){
+   return this.firstName?.valid || this.firstName?.touched
+  }
 }
