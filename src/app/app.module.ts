@@ -18,6 +18,9 @@ import { EventRouteActivator } from './event-detalis/event-route-activator.servi
 import { E404Component } from './e404/404.component';
 import { EventsListResolver } from './events-list-resolver.service';
 import { AuthService } from './user/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateSessionComponent } from './event-detalis/create-session/create-session.component';
+import { SessionListComponent } from './event-detalis/session-list/session-list.component';
 
 
 
@@ -30,12 +33,16 @@ import { AuthService } from './user/auth.service';
     EventDetalisComponent,
     CreateEventComponent,
     E404Component,
+    CreateSessionComponent,
+    SessionListComponent,
     
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     EventService,

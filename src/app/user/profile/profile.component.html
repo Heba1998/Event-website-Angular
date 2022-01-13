@@ -6,7 +6,8 @@
         <div class="form-group" [ngClass]="{'error': !validatedFirstName()}">
           <label for="firstName">First Name:</label>
           <input formControlName="firstName" id="firstName" type="text" class="form-control" placeholder="First Name..." />
-          <em *ngIf="!validatedFirstName()">required</em>
+          <em *ngIf="!validatedFirstName() && profileForm.controls.firstName.errors?.required">required</em>
+          <em *ngIf="!validatedFirstName() && profileForm.controls.firstName.errors?.pattern">this feild must start with letter</em>
         </div>
         <div class="form-group" [ngClass]="{'error': !validatedLastName() }">
           <label for="lastName">Last Name:</label>

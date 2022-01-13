@@ -29,7 +29,7 @@ import { IEvent } from './event.model';
   `,
   styles: [`
   .bad {
-    min-height:380px;
+    min-height:400px;
     color: #bbb;
     font-family: cursive
   }

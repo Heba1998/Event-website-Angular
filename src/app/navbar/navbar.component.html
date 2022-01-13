@@ -14,18 +14,23 @@
         <li><a [routerLink]="['/events/new']"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{exact:true}">Create Event</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-            Events
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li >
-              <a href="">Angular Connect</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+              Events
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li >
+                <a href="">Angular Connect</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a [routerLink]="['events/session/new']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}">Create Session</a>
+          </li>
+        </ul>
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li>

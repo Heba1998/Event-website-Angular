@@ -19,6 +19,13 @@ export class EventService {
   getevent(id: number): IEvent|undefined{
     return EVENTS.find( event=> event.id===id)
   }
+
+
+  saveEvent(event:any){
+  event.id= 999;
+  event.sessions= [];
+  EVENTS.push(event);
+  }
   constructor() { }
 }
 
