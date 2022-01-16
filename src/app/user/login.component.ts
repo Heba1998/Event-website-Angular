@@ -23,6 +23,7 @@ constructor(private authService: AuthService , private route: Router){
 login(formValue: any){
  this.authService.loginUser(formValue.userName, formValue.password)
  this.route.navigate(['/events'])
+ console.log(formValue.userName, formValue.password)
 }
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from '../common/toastr.service';
+import { ISession } from '../shared/event.model';
+import { EventService } from '../shared/event.service';
 import { AuthService } from '../user/auth.service';
 
 @Component({
@@ -18,11 +19,26 @@ import { AuthService } from '../user/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private toastr : ToastrService, public auth:AuthService) { }
+  searchTerm:string="";
+  foundSession!: ISession[];
+
+
+  constructor( public auth:AuthService, private eventService : EventService) {
+   
+   }
 
   ngOnInit(): void {
   }
-  handelthumbnail(){
-    this.toastr.success('Hello '+ this.auth.currentUser?.userName)
+
+  searchSessions(searchTerm:any){
+      this.eventService.searchSessions(searchTerm).subscribe(sessions =>{
+        this.foundSession=sessions
+        console.log(this.foundSession);
+      })
   }
+
+
+  // searchHandler(){
+  //   $('#id').modal()
+  // }
 }

@@ -1,27 +1,39 @@
-import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
 
-declare let toastr:any;
-@Injectable({
-  providedIn: 'root'
-})
-export class ToastrService {
+import { InjectionToken } from "@angular/core";
 
-  constructor() { }
+// declare let toastr:any;
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class ToastrService {
 
-  success(message:any, title?:string)
-  {
-   toastr.success(message, title)
-  }
-  info(message:string, title?:string)
-  {
-   toastr.info(message, title)
-  }
-  warning(message:string, title?:string)
-  {
-   toastr.warning(message, title)
-  }
-  error(message:string, title?:string)
-  {
-   toastr.error(message, title)
-  }
+//   constructor() { }
+
+//   success(message:any, title?:string)
+//   {
+//    toastr.success(message, title)
+//   }
+//   info(message:string, title?:string)
+//   {
+//    toastr.info(message, title)
+//   }
+//   warning(message:string, title?:string)
+//   {
+//    toastr.warning(message, title)
+//   }
+//   error(message:string, title?:string)
+//   {
+//    toastr.error(message, title)
+//   }
+// }
+
+
+export let TOASTR_TOKEN = new InjectionToken<Toastr>('toastr')
+
+export interface Toastr{
+  success(msg:string, title?:string): void
+  info(msg:string, title?:string): void
+  warning(msg:string, title?:string): void
+  error(msg:string, title?:string): void
 }

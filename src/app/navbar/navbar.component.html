@@ -39,21 +39,30 @@
             [routerLinkActiveOptions]="{exact:true}"
             *ngIf="!auth.isAuthenticated()">login</a>
             
-            <a (click)="handelthumbnail()" [routerLink]="['user/profile']" 
+            <a [routerLink]="['user/profile']" 
             routerLinkActive="active"
           [routerLinkActiveOptions]="{exact:true}" 
           *ngIf="auth.isAuthenticated()">Welcome {{auth.currentUser?.firstName}} </a>
           </li>
         </ul>
       </div>
-      <form id="searchForm"  class="navbar-form navbar-right"  >
+
+      <!-- serch  -->
+      <form id="searchForm"  class="navbar-form navbar-right" (ngSubmit)="searchSessions(searchTerm)" >
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search Sessions" >
+          <input [(ngModel)]="searchTerm" name="searchTerm" type="text" class="form-control" placeholder="Search Sessions" >
         </div>
-        <button class="btn btn-default" >
+        <button class="btn btn-default" modal-trigger>
           Search
         </button>
       </form>
     </div>
   </div>
 </div>
+
+
+<simple-modal title="Matching Sessions">
+  <div class="list-group">
+      <a class="list-group-item" *ngFor="let session of foundSession" [routerLink]="['/events' , session.id ]">{{session.name}}</a>
+  </div>
+</simple-modal>

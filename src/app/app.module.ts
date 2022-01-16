@@ -6,7 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ThumbnailComponent } from './shared/thumbnail.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ToastrService } from './common/toastr.service';
+import { Toastr, TOASTR_TOKEN } from './common/toastr.service';
 import { EventsListComponent } from './events-list/events-list.component';
 import { EventService } from './shared/event.service';
 import { EventDetalisComponent } from './event-detalis/event-detalis.component';
@@ -23,7 +23,12 @@ import { CreateSessionComponent } from './event-detalis/create-session/create-se
 import { SessionListComponent } from './event-detalis/session-list/session-list.component';
 import { collapsibleWellComponent } from './common/collapsible-well.component';
 import { DurationPipe } from './shared/duration.pipe';
+import { SimpleModelComponent } from './common/simpleModel.component';
+import { JQ_TOKEN } from './common/jQuery.service';
+import { ModalTriggerDirective } from './common/modalTrigger.directive';
 
+let toastr: Toastr = window['toastr']
+let jQuery = window['$']
 
 
 @NgModule({
@@ -38,7 +43,9 @@ import { DurationPipe } from './shared/duration.pipe';
     CreateSessionComponent,
     SessionListComponent,
     collapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModelComponent,
+    ModalTriggerDirective
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,10 @@ import { DurationPipe } from './shared/duration.pipe';
   ],
   providers: [
     EventService,
-     ToastrService,
+     {provide: TOASTR_TOKEN,
+    useValue: toastr},
+    {provide: JQ_TOKEN,
+      useValue: jQuery},
      EventRouteActivator,
      EventsListResolver,
      AuthService,
