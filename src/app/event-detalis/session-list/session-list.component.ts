@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IsActiveMatchOptions } from '@angular/router';
 import { ISession } from 'src/app/shared/event.model';
 
 @Component({
@@ -10,6 +11,7 @@ export class SessionListComponent implements OnInit {
 
   @Input()sessions: ISession[]| undefined;
   @Input() filterBy!:string;
+  @Input() sortBy!:string;
 visibleSession :ISession[]|undefined;
 
   
@@ -22,6 +24,7 @@ visibleSession :ISession[]|undefined;
   ngOnChanges(){
     if (this.sessions) {
       this.filterSessions(this.filterBy);
+      this.sortBy === 'name'? this.visibleSession?.sort(sortByNameAsc): this.visibleSession?.sort(sortByVotesDesc);
     }
   }
 
@@ -36,4 +39,21 @@ visibleSession :ISession[]|undefined;
     }
   }
 
+}
+
+
+function sortByNameAsc(s1:ISession , s2: ISession){
+  if (s1.name > s2.name) {
+    return 1;
+  }else if(s1.name === s2.name){
+    return 0;
+  }else{
+    return -1;
+  }
+}
+
+
+function sortByVotesDesc(s1:ISession , s2: ISession){
+ return s2.voters.length - s1.voters.length
+  
 }
