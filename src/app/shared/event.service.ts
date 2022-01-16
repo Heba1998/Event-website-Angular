@@ -26,6 +26,13 @@ export class EventService {
   event.sessions= [];
   EVENTS.push(event);
   }
+
+  updateEvent(event: any){
+    let index= EVENTS.findIndex(x => x.id = event.id)
+    EVENTS[index] =event
+  }
+
+
   constructor() { }
 }
 
