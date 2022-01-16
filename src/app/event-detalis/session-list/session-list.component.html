@@ -1,5 +1,5 @@
-<p>session-list works!</p>
-<div class="row" *ngFor="let session of sessions">
+
+<div class="row" *ngFor="let session of visibleSession">
     <div class="col-md-10">
       <collapsible-well>
         <div class="title">
@@ -8,7 +8,7 @@
         </div>
         <div class="body">
           <h6>{{session.presenter}}</h6>
-          <span>Duration: {{session.duration}}</span><br />
+          <span>Duration: {{session.duration |duration }}</span><br />
           <span>Level: {{session.level}}</span>
           <p>{{session.abstract}}</p>
         </div>
