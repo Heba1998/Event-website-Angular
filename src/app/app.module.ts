@@ -21,6 +21,7 @@ import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './event-detalis/create-session/create-session.component';
 import { SessionListComponent } from './event-detalis/session-list/session-list.component';
+import { collapsibleWellComponent } from './common/collapsible-well.component';
 
 
 
@@ -35,6 +36,7 @@ import { SessionListComponent } from './event-detalis/session-list/session-list.
     E404Component,
     CreateSessionComponent,
     SessionListComponent,
+    collapsibleWellComponent
     
   ],
   imports: [
