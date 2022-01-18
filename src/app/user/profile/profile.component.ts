@@ -1,5 +1,4 @@
 import { Component, Inject, inject, OnInit } from '@angular/core';
-import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Toastr, TOASTR_TOKEN } from 'src/app/common/toastr.service';
@@ -33,8 +32,8 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.firstName = new FormControl(this.auth.currentUser?.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')])
-    this.lastName = new FormControl(this.auth.currentUser?.lastName, Validators.required)
+    this.firstName = new FormControl(this.auth.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')])
+    this.lastName = new FormControl(this.auth.currentUser.lastName, Validators.required)
     this.profileForm = new FormGroup({
       firstName: this.firstName,
       lastName: this.lastName

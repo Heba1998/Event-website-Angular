@@ -47,7 +47,7 @@
         </ul>
       </div>
 
-      <!-- serch  -->
+      <!-- search  -->
       <form id="searchForm"  class="navbar-form navbar-right" (ngSubmit)="searchSessions(searchTerm)" >
         <div class="form-group">
           <input [(ngModel)]="searchTerm" name="searchTerm" type="text" class="form-control" placeholder="Search Sessions" >
@@ -60,9 +60,9 @@
   </div>
 </div>
 
-
-<simple-modal title="Matching Sessions">
+<!-- modal -->
+<simple-modal title="Matching Sessions" closeOnBodyClick = "true">
   <div class="list-group">
-      <a class="list-group-item" *ngFor="let session of foundSession" [routerLink]="['/events' , session.id ]">{{session.name}}</a>
+      <a class="list-group-item" *ngFor="let session of foundSession" [routerLink]="['/events' , session.eventId]">{{session.name}}</a>
   </div>
 </simple-modal>

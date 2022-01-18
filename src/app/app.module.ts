@@ -23,12 +23,14 @@ import { CreateSessionComponent } from './event-detalis/create-session/create-se
 import { SessionListComponent } from './event-detalis/session-list/session-list.component';
 import { collapsibleWellComponent } from './common/collapsible-well.component';
 import { DurationPipe } from './shared/duration.pipe';
-import { SimpleModelComponent } from './common/simpleModel.component';
+import { SimpleModelComponent } from './common/simpleModal.component';
 import { JQ_TOKEN } from './common/jQuery.service';
 import { ModalTriggerDirective } from './common/modalTrigger.directive';
+import { UpVoteComponent } from './event-detalis/upvote.component';
+import { VoterService } from './event-detalis/voter.service';
 
-let toastr: Toastr = window['toastr']
-let jQuery = window['$']
+let toastr: Toastr = window['toastr'];
+let jQuery = window['$'];
 
 
 @NgModule({
@@ -43,9 +45,10 @@ let jQuery = window['$']
     CreateSessionComponent,
     SessionListComponent,
     collapsibleWellComponent,
-    DurationPipe,
     SimpleModelComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    DurationPipe,
+    UpVoteComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ let jQuery = window['$']
      EventRouteActivator,
      EventsListResolver,
      AuthService,
+     VoterService,
      {
        provide: 'canDeactivateCreateEvent',
         useValue: checkDirtyState

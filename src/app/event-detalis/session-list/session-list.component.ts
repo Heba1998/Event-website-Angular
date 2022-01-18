@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IsActiveMatchOptions } from '@angular/router';
 import { ISession } from 'src/app/shared/event.model';
+import { AuthService } from 'src/app/user/auth.service';
+import { VoterService } from '../voter.service';
 
 @Component({
   selector: 'session-list',
@@ -15,11 +17,15 @@ export class SessionListComponent implements OnInit {
 visibleSession :ISession[]|undefined;
 
   
-  constructor() { }
+  constructor(public auth : AuthService, private voterService: VoterService) { }
 
   ngOnInit(): void {
   }
 
+
+  loggedin(){
+    return this.auth.isAuthenticated()
+  }
 
   ngOnChanges(){
     if (this.sessions) {
@@ -38,6 +44,26 @@ visibleSession :ISession[]|undefined;
       })
     }
   }
+
+
+
+  toggleVote(session: ISession){
+      if (this.userHasVoted(session)) {
+        this.voterService.deleteVoter(session, this.auth.currentUser.userName);
+      }else{
+        this.voterService.addVoter(session, this.auth.currentUser.userName);
+      }
+
+      if (this.sortBy === 'votes') {
+        this.visibleSession.sort(sortByVotesDesc)
+      }
+  }
+
+
+  userHasVoted(session: ISession){
+    return this.voterService.userHasVoted(session, this.auth.currentUser.userName);
+  }
+ 
 
 }
 

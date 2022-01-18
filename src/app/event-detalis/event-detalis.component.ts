@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IEvent, ISession } from '../shared/event.model';
 import { EventService } from '../shared/event.service';
 
@@ -17,8 +17,12 @@ export class EventDetalisComponent implements OnInit {
   constructor(private eventService : EventService, private route: ActivatedRoute, private home:Router) { }
 
   ngOnInit(): void {
-    // "+" just to cast value to a number
-    this.event= this.eventService.getevent(+this.route.snapshot.params['id'])
+    this.route.params.forEach((params: Params) => {
+        this.event = this.eventService.getevent(+params['id'])
+        this.addMode= false;
+    })
+    // // "+" just to cast value to a number
+    // this.event= this.eventService.getevent(+this.route.snapshot.params['id'])
   }
 
   goToHomePage(){
