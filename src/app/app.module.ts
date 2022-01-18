@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { EventsAppComponent } from './events-app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { HttpClientModule } from "@angular/common/http";
 import { ThumbnailComponent } from './shared/thumbnail.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { Toastr, TOASTR_TOKEN } from './common/toastr.service';
@@ -28,6 +28,7 @@ import { JQ_TOKEN } from './common/jQuery.service';
 import { ModalTriggerDirective } from './common/modalTrigger.directive';
 import { UpVoteComponent } from './event-detalis/upvote.component';
 import { VoterService } from './event-detalis/voter.service';
+import { LocationValidator } from './create-event/location-validator.directive';
 
 let toastr: Toastr = window['toastr'];
 let jQuery = window['$'];
@@ -48,14 +49,16 @@ let jQuery = window['$'];
     SimpleModelComponent,
     ModalTriggerDirective,
     DurationPipe,
-    UpVoteComponent
+    UpVoteComponent,
+    LocationValidator
   ],
   imports: [
     BrowserModule,
     NgbModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     EventService,
