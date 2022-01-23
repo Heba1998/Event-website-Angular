@@ -37,7 +37,8 @@ export class CreateSessionComponent implements OnInit {
     this.presenter= new FormControl('', Validators.required)
     this.duration= new FormControl('', Validators.required)
     this.level= new FormControl('', Validators.required)
-    this.abstract= new FormControl('', [Validators.required, Validators.maxLength(200), restricted(['hi', 'by'])])
+    this.abstract= new FormControl('', [Validators.required, Validators.maxLength(200)])
+    // this.abstract= new FormControl('', [Validators.required, Validators.maxLength(200), restricted(['by'])])
 
     this.newSessionForm= new FormGroup({
       name : this.name,
