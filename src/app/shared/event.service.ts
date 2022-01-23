@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IEvent, ISession } from './event.model';
 
@@ -20,73 +20,77 @@ export class EventService {
     // }, 100)
     // return subject;
   }
-
-
-
+  
+  getevent(id: number): Observable<IEvent>{
+    return this.http.get<IEvent>('/api/events/' + id).pipe(catchError(this.handleError<IEvent>('getevent')))
+  }
+  
+  
+  saveEvent(event:any){
+    let option = {headers : new HttpHeaders({'Content-Type': 'application/json'})};
+   return this.http.post<IEvent>('/api/events', event, option)
+    .pipe(catchError(this.handleError<IEvent>('saveEvent')))
+    // event.id= 999;
+    // event.sessions= [];
+    // EVENTS.push(event);
+  }
+  
+  // updateEvent(event: any){
+  //   let index= EVENTS.findIndex(x => x.id = event.id)
+  //   EVENTS[index] =event
+  // }
+  
+  
+  searchSessions(searchTerm:string): Observable<ISession[]>{
+    return this.http.get<ISession[]>('/api/sessions/search?search=' + searchTerm).pipe(catchError(this.handleError<ISession[]>('searchSessions')))
+    // var term = searchTerm.toLocaleLowerCase();
+    // var results: ISession[]=[];
+    
+    // EVENTS.forEach(event => {
+    //   var matchingSessions= event.sessions.filter(session =>
+    //     session.name.toLocaleLowerCase().indexOf(term) > -1);
+    //     matchingSessions= matchingSessions.map((session:any) => {
+    //       session.eventId = event.id;
+    //       return session;
+    //     })
+    //     results = results.concat(matchingSessions)
+    //   })
+      
+    //   var emitter = new EventEmitter(true);
+    //   setTimeout(() => {
+    //     emitter.emit(results);
+    //   },100);
+    //   return emitter;
+    }
+    
+    
+    
+      
   private handleError<T>(operation ='operation', result?:T) {
     return (error:any):Observable<T> =>{
       console.error(error);
       return of(result as T)
     }
   }
-
-  getevent(id: number): IEvent|undefined{
-    return EVENTS.find( event=> event.id===id)
-  }
-
-
-  saveEvent(event:any){
-  event.id= 999;
-  event.sessions= [];
-  EVENTS.push(event);
-  }
-
-  updateEvent(event: any){
-    let index= EVENTS.findIndex(x => x.id = event.id)
-    EVENTS[index] =event
-  }
-
-
-  searchSessions(searchTerm:string){
-      var term = searchTerm.toLocaleLowerCase();
-      var results: ISession[]=[];
-
-      EVENTS.forEach(event => {
-        var matchingSessions= event.sessions.filter(session =>
-          session.name.toLocaleLowerCase().indexOf(term) > -1);
-        matchingSessions= matchingSessions.map((session:any) => {
-          session.eventId = event.id;
-          return session;
-        })
-        results = results.concat(matchingSessions)
-      })
-
-      var emitter = new EventEmitter(true);
-      setTimeout(() => {
-        emitter.emit(results);
-      },100);
-      return emitter;
-  }
-
 }
-
-const EVENTS: IEvent[] = [
-  {
-    id: 1,
-    name: 'Angular Connect',
-    date: new Date('9/26/2036'),
-    time: '10:00 am',
-    price: 599.99,
-    imageUrl: '/assets/images/angularconnect-shield.png',
-    location: {
-      address: '1057 DT',
-      city: 'London',
-      country: 'England'
-    },
-    sessions: [
-      {
-        id: 1,
-        name: "Using Angular 4 Pipes",
+  
+  const EVENTS: IEvent[] = [
+    {
+      id: 1,
+      name: 'Angular Connect',
+      date: new Date('9/26/2036'),
+      time: '10:00 am',
+      price: 599.99,
+      imageUrl: '/assets/images/angularconnect-shield.png',
+      location: {
+        address: '1057 DT',
+        city: 'London',
+        country: 'England'
+      },
+      sessions: [
+        {
+          id: 1,
+          name: "Using Angular 4 Pipes",
         presenter: "Peter Bacon Darwin",
         duration: 1,
         level: "Intermediate",

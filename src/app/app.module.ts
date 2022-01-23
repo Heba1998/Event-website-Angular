@@ -14,7 +14,6 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { CreateEventComponent } from './create-event/create-event.component';
 
-import { EventRouteActivator } from './event-detalis/event-route-activator.service';
 import { E404Component } from './e404/404.component';
 import { EventsListResolver } from './events-list-resolver.service';
 import { AuthService } from './user/auth.service';
@@ -29,6 +28,7 @@ import { ModalTriggerDirective } from './common/modalTrigger.directive';
 import { UpVoteComponent } from './event-detalis/upvote.component';
 import { VoterService } from './event-detalis/voter.service';
 import { LocationValidator } from './create-event/location-validator.directive';
+import { EventResolver } from './event-resolver.service';
 
 let toastr: Toastr = window['toastr'];
 let jQuery = window['$'];
@@ -66,9 +66,9 @@ let jQuery = window['$'];
     useValue: toastr},
     {provide: JQ_TOKEN,
       useValue: jQuery},
-     EventRouteActivator,
      EventsListResolver,
      AuthService,
+     EventResolver,
      VoterService,
      {
        provide: 'canDeactivateCreateEvent',
