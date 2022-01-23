@@ -48,8 +48,12 @@ isDirty:boolean= true
 
 
   saveEvent(value: any){
-   this.eventServise.saveEvent(value);
-   this.isDirty= false
-   this.router.navigate(['/events'])
+    this.eventServise.saveEvent(value).subscribe(()=>{
+      this.isDirty= false
+      this.router.navigate(['/events'])
+    })
+  //  this.eventServise.saveEvent(value);
+  //  this.isDirty= false
+  //  this.router.navigate(['/events'])
   }
 }
