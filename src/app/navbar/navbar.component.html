@@ -42,7 +42,7 @@
             <a [routerLink]="['user/profile']" 
             routerLinkActive="active"
           [routerLinkActiveOptions]="{exact:true}" 
-          *ngIf="auth.isAuthenticated()">Welcome {{auth.currentUser?.firstName}} </a>
+          *ngIf="auth.isAuthenticated()">Welcome {{auth.currentUser?.userName}} </a>
           </li>
         </ul>
       </div>
