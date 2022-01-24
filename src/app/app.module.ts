@@ -30,8 +30,8 @@ import { VoterService } from './event-detalis/voter.service';
 import { LocationValidator } from './create-event/location-validator.directive';
 import { EventResolver } from './event-resolver.service';
 
-let toastr: Toastr = window['toastr'];
-let jQuery = window['$'];
+const toastr: Toastr = window['toastr'];
+const jQuery = window['$'];
 
 
 @NgModule({

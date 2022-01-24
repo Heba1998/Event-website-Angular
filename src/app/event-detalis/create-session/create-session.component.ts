@@ -29,8 +29,8 @@ export class CreateSessionComponent implements OnInit {
   duration!: FormControl
   level!: FormControl
   abstract!: FormControl
-  mouseover:boolean=false
-  constructor() { }
+  mouseover=false
+ 
 
   ngOnInit(): void {
     this.name= new FormControl('', Validators.required)
@@ -52,7 +52,7 @@ export class CreateSessionComponent implements OnInit {
 
 
   saveSession(value: any){
-    let session: ISession=
+    const session: ISession=
     {
       name: value.name,
       id: undefined || 99,

@@ -10,9 +10,9 @@ import { EventService } from '../shared/event.service';
 })
 export class EventDetalisComponent implements OnInit {
   event:IEvent | undefined
-  addMode: boolean = false
- filterBy:string = 'all';
- sortBy:string = 'votes'
+  addMode = false
+ filterBy = 'all';
+ sortBy = 'votes'
 
   constructor(private eventService : EventService, private route: ActivatedRoute, private home:Router) { }
 

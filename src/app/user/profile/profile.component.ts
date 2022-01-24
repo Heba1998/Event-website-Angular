@@ -17,10 +17,10 @@ import { AuthService } from '../auth.service';
     }`]
 })
 export class ProfileComponent implements OnInit {
-  isDirty: boolean= true;
+  isDirty= true;
   profileForm!: FormGroup;
-  mouseoverlogin: boolean = false;
-  mouseover:boolean=false;
+  mouseoverlogin = false;
+  mouseover=false;
   private firstName: FormControl = new FormControl;
   private lastName: FormControl = new FormControl;
 
