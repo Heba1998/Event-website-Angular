@@ -17,7 +17,7 @@ export class VoterService{
     deleteVoter(eventId: number, session: ISession, voterName: string){
             session.voters= session.voters.filter(voter => voter !== voterName);
 
-            let url = `api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
+            const url = `api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
             this.http.delete(url)
             .pipe(catchError(this.handleError('deleteVoter')))
             .subscribe();
@@ -28,8 +28,8 @@ export class VoterService{
     addVoter(eventId: number , session: ISession, voterName: string){
             session.voters.push(voterName);
             
-            let options ={headers: new HttpHeaders({'Content-Type': 'application/json'})} 
-            let url = `api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
+            const options ={headers: new HttpHeaders({'Content-Type': 'application/json'})} 
+            const url = `api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
             this.http.post(url , {}, options )
             .pipe(catchError(this.handleError('addVoter')))
             .subscribe();

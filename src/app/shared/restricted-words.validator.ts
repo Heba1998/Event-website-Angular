@@ -6,7 +6,7 @@ export function restricted(words: any){
      if (!words) {
        return null
      }
-     var invalidwords = words.map((w: any) => control.value.includes(w)? w: null)
+     const invalidwords = words.map((w: any) => control.value.includes(w)? w: null)
      .filter((w:any) => w !=null)
  
  

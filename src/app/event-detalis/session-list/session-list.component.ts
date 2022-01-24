@@ -9,7 +9,7 @@ import { VoterService } from '../voter.service';
   templateUrl: './session-list.component.html',
   styleUrls: ['./session-list.component.css']
 })
-export class SessionListComponent implements OnInit {
+export class SessionListComponent{
 
   @Input()sessions: ISession[]| undefined;
   @Input() filterBy!:string;
@@ -23,9 +23,7 @@ visibleSession :ISession[]|undefined;
   
   constructor(public auth : AuthService, private voterService: VoterService) { }
 
-  ngOnInit(): void {
-  }
-
+  
 
   loggedin(){
     return this.auth.isAuthenticated()

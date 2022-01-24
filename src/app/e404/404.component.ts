@@ -11,11 +11,7 @@ import { Component, OnInit } from '@angular/core';
       text-align: center; 
     }`]
 })
-export class E404Component implements OnInit {
+export class E404Component {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

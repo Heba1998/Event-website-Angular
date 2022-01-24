@@ -36,15 +36,12 @@ import { IEvent } from './event.model';
   }
   `]
 })
-export class ThumbnailComponent implements OnInit {
+export class ThumbnailComponent {
 
   @Input() event: IEvent | undefined
   property : any ="anything ";
   // @Output() eventclick = new EventEmitter()
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+ 
 
   // clickme(){
   //  this.eventclick.emit("you are clicked meee 😒"),

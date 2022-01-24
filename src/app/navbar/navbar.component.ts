@@ -17,9 +17,9 @@ import { AuthService } from '../user/auth.service';
   }
   `]
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-  searchTerm:string="";
+  searchTerm="";
   foundSession!: ISession[];
 
 
@@ -27,8 +27,7 @@ export class NavbarComponent implements OnInit {
    
    }
 
-  ngOnInit(): void {
-  }
+
 
   searchSessions(searchTerm:any){
       this.eventService.searchSessions(searchTerm).subscribe(sessions =>{
