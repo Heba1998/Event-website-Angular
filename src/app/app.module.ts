@@ -10,7 +10,7 @@ import { Toastr, TOASTR_TOKEN } from './common/toastr.service';
 import { EventsListComponent } from './events-list/events-list.component';
 import { EventService } from './shared/event.service';
 import { EventDetalisComponent } from './event-detalis/event-detalis.component';
-import { RouterModule } from '@angular/router';
+import { PreloadAllModules, RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { CreateEventComponent } from './create-event/create-event.component';
 
@@ -55,7 +55,7 @@ const jQuery = window['$'];
   imports: [
     BrowserModule,
     NgbModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
